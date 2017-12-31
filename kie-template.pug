@@ -1,0 +1,77 @@
+doctype html
+html(lang='pl')
+  head
+    meta(charset='utf-8')
+    title=title
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(format-detection='telephone=no')
+    link(href=`${assetsPath}/css/vendors.min.css` rel='stylesheet')
+    link(href=`${assetsPath}/css/legacy.min.css` rel='stylesheet')
+    link(href=`${assetsPath}/css/main.min.css` rel='stylesheet')
+    link(href=`../images/favicon.png` rel='icon' type='image/png')
+    block additionalMeta
+  body(class="standalone-exercise")
+    main.exercise
+      nav.mobile-pagination
+        ul
+          li.read-button.active
+            button.read-icon
+              | Czytaj
+          li.preview-button
+            button.preview-icon
+              | Podgląd
+          if (ytVideoId)
+            li.video-button
+              button.video-icon
+                | Wideo
+      section.exercise-content-wrapper
+        div.exercise-content(tabindex="-1")
+          | !{exerciseText}
+          nav.whats-next
+            if (previousURL)
+              a(href=`/${previousURL}`)
+                | Poprzedni rozdział
+            if (nextURL)
+              button.next-chapter
+                a(href=`/${nextURL}`)
+                  | Następny rozdział
+            if (!nextURL)
+              a(href=`../`)
+                | Strona główna kursu
+          div#disqus_thread
+      aside.exercise-aside-wrapper
+        div.exercise-preview
+        aside.exercise-video
+          div#youtube-video
+    //- this section will delete itself onload.
+    script#bookContents
+      - var jsonString = exerciseJSON.replace(/<\/script>/g, "<\\/script>").replace(/\\"/g, '\\\\"')
+      | window.interactiveEbook = window.interactiveEbook || {};
+      | window.interactiveEbook.chapterId = "!{chapterId}";
+      | window.interactiveEbook.assets = {};
+      if (previousURL)
+        | window.interactiveEbook.previousUrl = "!{previousURL}";
+      if (nextURL)
+        | window.interactiveEbook.nextUrl = "!{nextURL}";
+      if (ytVideoId)
+        | window.interactiveEbook.ytUrl = "!{ytVideoId}";
+      if (root)
+        | window.interactiveEbook.courseRoot = "!{root}";
+      if (exerciseImages)
+        - exerciseImages = exerciseImages.map(el => `"${el}"`);
+        | window.interactiveEbook.assets.img = [!{exerciseImages}];
+      | window.interactiveEbook.snippets = JSON.parse(`!{jsonString}`.replace(/<\\\/script>/g,"<\/script>").replace(/\n/g, "\\n"));
+      //- GA and Disqus
+      |  var disqus_config = function() {
+      |   this.page.url = 'http://kodu.je/!{chapterId}';
+      |   this.page.identifier = 'kodu.je/!{chapterId}';
+      |  };
+      |  (function() { // DON'T EDIT BELOW THIS LINE
+      |    var d = document,
+      |      s = d.createElement('script');
+      |    s.src = 'https://koduje.disqus.com/embed.js';
+      |    s.setAttribute('data-timestamp', +new Date());
+      |    (d.head || d.body).appendChild(s);
+      |  })();
+      | var bookContentsScriptEl = document.querySelector('#bookContents'); bookContentsScriptEl.parentNode.removeChild(bookContentsScriptEl);
+    script(src=`${assetsPath}/js/main.js`)
