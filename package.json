@@ -1,0 +1,21 @@
+{
+  "name": "static-builder",
+  "version": "0.0.1",
+  "description": "Static builder for KIE project",
+  "main": "static-builder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Worie/kie-static-builder.git"
+  },
+  "author": "Wojciech Połowniak",
+  "bin": {
+    "kie-static": "bin/app.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Worie/kie-static-builder/issues"
+  },
+  "homepage": "https://github.com/Worie/kie-static-builder#readme"
+}
