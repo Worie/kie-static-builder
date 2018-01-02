@@ -1,0 +1,3 @@
+[submodule "example-content"]
+	path = example-content
+	url = https://github.com/Worie/kie-example-content
