@@ -1,3 +1,6 @@
 [submodule "kie-lang"]
 	path = kie-lang
 	url = git@github.com:Worie/kie-lang.git
+[submodule "kie-example-content"]
+	path = kie-example-content
+	url = git@github.com:Worie/kie-example-content.git
