@@ -1,3 +1,6 @@
 [submodule "example-content"]
 	path = example-content
 	url = https://github.com/Worie/kie-example-content
+[submodule "kie-lang"]
+	path = kie-lang
+	url = git@github.com:Worie/kie-lang.git

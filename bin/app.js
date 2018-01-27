@@ -2,8 +2,7 @@
 
 'use strict';
 
-//const kielify = require('../../kiel');
-const kielify = () => 'TODO';
+const kielify = require('../kie-lang/kiel.js');
 const gulp = require('gulp');
 const pug = require('gulp-pug');
 const argv = require('yargs').argv;
