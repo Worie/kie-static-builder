@@ -17,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/Worie/kie-static-builder/issues"
   },
-  "homepage": "https://github.com/Worie/kie-static-builder#readme"
+  "homepage": "https://github.com/Worie/kie-static-builder#readme",
+  "dependencies": {
+    "find": "^0.2.9",
+    "gulp": "^3.9.1",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-string-replace": "^1.0.0",
+    "yargs": "^11.0.0"
+  }
 }
